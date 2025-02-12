@@ -1,0 +1,11 @@
+.vscode
+__pycache__
+.pytest_cache
+dist
+test.db
+log.txt
+Pipfile.lock
+env3.*
+.env
+venv
+AdA_backend.egg-info/

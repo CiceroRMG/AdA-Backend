@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: default
+      POSTGRES_PASSWORD: default
+      POSTGRES_DB: ada_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    command: uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://default:default@db/ada_db
+
+volumes:
+  postgres_data:
