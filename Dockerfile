@@ -1,6 +1,7 @@
 FROM python:3.12-slim
 
 WORKDIR /app
+RUN echo "DATABASE_URL=postgresql://default:default@localhost:5432/ada_db" > .env
 
 ENV PYTHONUNBUFFERED=1
 
