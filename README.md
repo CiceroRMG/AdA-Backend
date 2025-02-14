@@ -18,7 +18,7 @@ Este projeto é construído com python e fastAPI, utilizando Postgre como banco 
 
 1. Navegue até a pasta do projeto e execute:
    ```
-   `docker-compose up --build`
+   `docker compose up --build`
    ```
 2. Acesse http://localhost:8000 para verificar o funcionamento
 
