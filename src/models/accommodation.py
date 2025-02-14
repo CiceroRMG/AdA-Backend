@@ -8,3 +8,4 @@ class AccommodationModel(Base):
     image = Column(ARRAY(String), nullable=True)
     night_price = Column(Float, nullable=False)
     location = Column(String, index=True, nullable=False)
+    tag = Column(String, nullable=False)

@@ -7,6 +7,7 @@ class AccommodationSchema(BaseModel):
     image: List[str] | None = None
     night_price: float
     location: str
+    tag: str
 
     model_config = {
         "from_attributes": True

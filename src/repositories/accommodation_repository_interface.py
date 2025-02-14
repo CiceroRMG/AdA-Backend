@@ -4,7 +4,7 @@ from src.schemas.accommodation import AccommodationSchema
 
 class AccommodationRepositoryInterface(ABC):
     @abstractmethod
-    def get_all(self) -> List[AccommodationSchema]:
+    def get_all(self, page: str = None) -> List[AccommodationSchema]:
         pass
 
     @abstractmethod
@@ -12,5 +12,5 @@ class AccommodationRepositoryInterface(ABC):
         pass
 
     @abstractmethod
-    def get_by_city(self, city: str) -> List[AccommodationSchema]:
+    def get_by_city(self, city: str, page: str = None) -> List[AccommodationSchema]:
         pass

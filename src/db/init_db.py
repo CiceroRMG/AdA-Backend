@@ -1,3 +1,4 @@
+from src.utils.normalize_string import normalize_string
 from src.db.database import engine, SessionLocal, Base
 from src.models.accommodation import AccommodationModel
 
@@ -120,17 +121,90 @@ def init_db():
                 "location": "São Paulo"
             },
             {
-                "name": "Casa Vista Mar",
+                "name": "Suite Rio",
                 "image": [
                     "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=30",
                     "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=30"
                 ],
-                "night_price": 450.0,
+                "night_price": 500.0,
                 "location": "Rio de Janeiro"
+            },
+            {
+                "name": "Pousada Mar Azul",
+                "image": [
+                    "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=30",
+                    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=30"
+                ],
+                "night_price": 420.0,
+                "location": "Florianópolis"
+            },
+            {
+                "name": "Refúgio das Montanhas",
+                "image": [
+                    "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=30",
+                    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=30"
+                ],
+                "night_price": 380.0,
+                "location": "Campos do Jordão"
+            },
+            {
+                "name": "Vista do Paraíso",
+                "image": [
+                    "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=30",
+                    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=600?q=30"
+                ],
+                "night_price": 500.0,
+                "location": "Gramado"
+            },
+            {
+                "name": "Suíte Pérola do Atlântico",
+                "image": [
+                    "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=30",
+                    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=600?q=30"
+                ],
+                "night_price": 600.0,
+                "location": "Salvador"
+            },
+            {
+                "name": "Chalé Sereno",
+                "image": [
+                    "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=30",
+                    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=600?q=30"
+                ],
+                "night_price": 450.0,
+                "location": "Monte Verde"
+            },
+            {
+                "name": "Luxo Tropical",
+                "image": [
+                    "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=30",
+                    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=600?q=30"
+                ],
+                "night_price": 700.0,
+                "location": "Fernando de Noronha"
+            },
+            {
+                "name": "Cabana ao Ar Livre",
+                "image": [
+                    "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=30",
+                    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=600?q=30"
+                ],
+                "night_price": 700.0,
+                "location": "Fernando de Noronha"
+            },
+            {
+                "name": "Casa na Fazenda",
+                "image": [
+                    "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=30",
+                    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=600?q=30"
+                ],
+                "night_price": 100.0,
+                "location": "Erechim"
             },
         ]
 
         for data in dummy_data:
+            data["tag"] = normalize_string(data["location"])
             db.add(AccommodationModel(**data))
         db.commit()
     db.close()
